@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ud9-b9-z64">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Splash Screen-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="SplashScreen" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S2X-yT-bn7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Geq-dn-YfL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sgd-EF-ESp"/>
+                    <connections>
+                        <segue destination="Our-2x-4rT" kind="push" identifier="toEmployeeList" id="I6b-Fe-5aN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="138"/>
+        </scene>
+        <!--Employee List - Employee List-->
+        <scene sceneID="QPL-ZQ-gyd">
+            <objects>
+                <tableViewController id="Our-2x-4rT" customClass="EmployeeList" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="39" sectionHeaderHeight="22" sectionFooterHeight="22" id="gVA-gY-PFd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="0iv-Bq-jcL">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="Our-2x-4rT" id="Dm3-Qn-oRd"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="39" id="J6p-SK-uXx">
+                                <rect key="frame" x="0.0" y="130" width="320" height="39"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J6p-SK-uXx" id="qgb-sD-FnU">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Our-2x-4rT" id="DD9-DB-cAc"/>
+                            <outlet property="delegate" destination="Our-2x-4rT" id="pj5-0J-GaU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Employee List" id="MWt-uy-Rtw"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="aF2-gl-6jW" id="8Gn-zM-Ecs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFh-pG-fyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="mVE-dQ-w0a">
+                    <connections>
+                        <outlet property="delegate" destination="Our-2x-4rT" id="ojJ-LY-OlZ"/>
+                        <outlet property="searchContentsController" destination="Our-2x-4rT" id="HeD-Tx-gPa"/>
+                        <outlet property="searchResultsDataSource" destination="Our-2x-4rT" id="Yze-tJ-mRW"/>
+                        <outlet property="searchResultsDelegate" destination="Our-2x-4rT" id="bJq-zy-XZC"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="aF2-gl-6jW">
+                    <connections>
+                        <outlet property="delegate" destination="Our-2x-4rT" id="USa-pp-BAe"/>
+                        <outlet property="searchBar" destination="0iv-Bq-jcL" id="9AR-Rh-frU"/>
+                        <outlet property="searchContentsController" destination="Our-2x-4rT" id="CPw-Sy-uPS"/>
+                        <outlet property="searchResultsDataSource" destination="Our-2x-4rT" id="2Ze-l0-f5b"/>
+                        <outlet property="searchResultsDelegate" destination="Our-2x-4rT" id="xQV-70-Vfu"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1474" y="129"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oc4-vt-1qq">
+            <objects>
+                <navigationController storyboardIdentifier="toEmpList" automaticallyAdjustsScrollViewInsets="NO" id="ud9-b9-z64" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RGD-0I-bqM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="BaK-GI-6bw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQF-aB-KVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="365" y="138"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
