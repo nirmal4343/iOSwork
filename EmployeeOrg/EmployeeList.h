@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EmployeeList : UITableViewController {
+@interface EmployeeList : UITableViewController <UISearchBarDelegate> {
     NSArray * empList;
     NSCache * _cache;
     
@@ -16,5 +16,6 @@
 
 @property (nonatomic,retain) NSArray *empList;
 @property (nonatomic,retain) NSCache *_cache;
+@property (nonatomic,strong) IBOutlet UISearchBar *searchBar;
 
 @end

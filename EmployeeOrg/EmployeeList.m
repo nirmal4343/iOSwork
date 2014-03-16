@@ -14,46 +14,32 @@
 
 @implementation EmployeeList {
     
-    NSArray *searchResults;
+    NSMutableArray *searchResults;
 }
 
 @synthesize empList,_cache;
 
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@" viewDidLoad..");
     
-    self.navigationItem.hidesBackButton = YES;
+
+
     
     _cache = [[NSCache alloc] init];
     _cache.name = @"Custom Image Cache";
     _cache.countLimit = 50;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -62,14 +48,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
+    if(tableView == self.tableView){
+          return [empList count];
+    }else{
         return [searchResults count];
-        
-    } else {
-       return [empList count];
-        
     }
     
 }
@@ -85,7 +68,11 @@
     }
     
     
-    [self loadCell:empList toCell:cell imageIndexPath:indexPath];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        [self loadCell:searchResults toCell:cell imageIndexPath:indexPath];
+    } else {
+        [self loadCell:empList toCell:cell imageIndexPath:indexPath];
+    }
     
     return cell;
 }
@@ -94,13 +81,9 @@
 - (void) loadCell:(NSArray *) newEmpList toCell:(UITableViewCell *) cell imageIndexPath:(NSIndexPath *)indexPath
 {
     
-    
-    
     NSDictionary *emp = [newEmpList objectAtIndex:[indexPath row]];
-    
     cell.textLabel.text = [emp objectForKey:@"firstName"];
     cell.imageView.image = [UIImage imageNamed:@"contact.jpeg"];
-    
     UIImage *image = [_cache objectForKey:[emp objectForKey:@"picture"]];
     
     if (image) {
@@ -120,63 +103,46 @@
             });
             [_cache setObject:image forKey:[emp objectForKey:@"picture"]];
         });
+
+    }
+    cell.accessoryType = UITableViewCellSelectionStyleBlue;
+}
+
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+
+    int i = 0;
+    while (i < [empList count]) {
         
+        NSDictionary *emp = [empList objectAtIndex:i];
         
+        NSString * name =  [emp objectForKey:@"firstName"];
+        
+        if ([name rangeOfString:searchText].location == NSNotFound) {
+            NSLog(@"Name Not Found");
+        } else {
+            NSLog(@"Found %@ " ,name );
+            [searchResults addObject:emp];
+        }
+        i++;
     }
     
-    cell.accessoryType = UITableViewCellSelectionStyleBlue;
+}
+
+
+
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    searchResults = [[NSMutableArray alloc] init];
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
     
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

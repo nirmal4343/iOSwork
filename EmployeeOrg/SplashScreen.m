@@ -87,6 +87,10 @@
     if([[segue identifier] isEqualToString:@"toEmployeeList"]){
         
         EmployeeList *employeeList = [segue destinationViewController];
+        
+        // Hide back button
+        [employeeList.navigationItem setHidesBackButton:YES];
+        
         NSArray *myArray = [NSArray arrayWithArray:self.empList];
         employeeList.empList = myArray;
     }
