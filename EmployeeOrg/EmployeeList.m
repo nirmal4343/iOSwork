@@ -7,6 +7,8 @@
 //
 
 #import "EmployeeList.h"
+#import "EmployeeDetails.h"
+
 
 @interface EmployeeList ()
 
@@ -17,7 +19,7 @@
     NSMutableArray *searchResults;
 }
 
-@synthesize empList,_cache;
+@synthesize empList,_cache,image;
 
 
 
@@ -144,5 +146,36 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
     return YES;
 }
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSLog(@"Selected row of section >> %d",indexPath.row);
+    
+    
+    empNewMap = [empList objectAtIndex:indexPath.row];
+    image = [_cache objectForKey:[empNewMap objectForKey:@"picture"]];
+    
+    [self performSegueWithIdentifier:@"toEmpDtl" sender:self];
+}
+
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+   
+    if([[segue identifier] isEqualToString:@"toEmpDtl"]){
+        
+        employeeDtl = [segue destinationViewController];
+        employeeDtl.empMap =  empNewMap;
+        employeeDtl.image = self.image;
+        // Hide back button
+        //[employeeDtl.navigationItem setHidesBackButton:YES];
+        
+    }
+    
+}
+
+
 
 @end

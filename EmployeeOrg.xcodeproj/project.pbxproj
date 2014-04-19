@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0CC7801902F5A800261DE4 /* EmployeeDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CC77F1902F5A800261DE4 /* EmployeeDetails.m */; };
+		3D0CC7831902F7D000261DE4 /* JSCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0CC7821902F7D000261DE4 /* JSCustomCell.m */; };
 		3D1B9E0218CB7BC800E89028 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B9E0118CB7BC800E89028 /* Foundation.framework */; };
 		3D1B9E0418CB7BC800E89028 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B9E0318CB7BC800E89028 /* CoreGraphics.framework */; };
 		3D1B9E0618CB7BC800E89028 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B9E0518CB7BC800E89028 /* UIKit.framework */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0CC77E1902F5A800261DE4 /* EmployeeDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployeeDetails.h; sourceTree = "<group>"; };
+		3D0CC77F1902F5A800261DE4 /* EmployeeDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployeeDetails.m; sourceTree = "<group>"; };
+		3D0CC7811902F7D000261DE4 /* JSCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCustomCell.h; sourceTree = "<group>"; };
+		3D0CC7821902F7D000261DE4 /* JSCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCustomCell.m; sourceTree = "<group>"; };
 		3D1B9DFE18CB7BC800E89028 /* EmployeeOrg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeOrg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1B9E0118CB7BC800E89028 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3D1B9E0318CB7BC800E89028 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,6 +190,10 @@
 				3D1B9E1718CB7BC800E89028 /* ViewController.m */,
 				3D1B9E5418CD3EB800E89028 /* EmployeeList.h */,
 				3D1B9E5518CD3EB800E89028 /* EmployeeList.m */,
+				3D0CC77E1902F5A800261DE4 /* EmployeeDetails.h */,
+				3D0CC77F1902F5A800261DE4 /* EmployeeDetails.m */,
+				3D0CC7811902F7D000261DE4 /* JSCustomCell.h */,
+				3D0CC7821902F7D000261DE4 /* JSCustomCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -325,11 +335,13 @@
 			files = (
 				3D1B9E1818CB7BC800E89028 /* ViewController.m in Sources */,
 				3D1B9E1218CB7BC800E89028 /* AppDelegate.m in Sources */,
+				3D0CC7801902F5A800261DE4 /* EmployeeDetails.m in Sources */,
 				3D1B9E0E18CB7BC800E89028 /* main.m in Sources */,
 				3D1B9E4F18CB8DC400E89028 /* HttpRequest.m in Sources */,
 				3D1B9E5318CB8DCF00E89028 /* EmployeeMediator.m in Sources */,
 				3D1B9E5618CD3EB800E89028 /* EmployeeList.m in Sources */,
 				3D1B9E5A18CD4B0700E89028 /* Employee.m in Sources */,
+				3D0CC7831902F7D000261DE4 /* JSCustomCell.m in Sources */,
 				3D1B9E5018CB8DC400E89028 /* HttpConnectionManager.m in Sources */,
 				3D1B9E4918CB8D8700E89028 /* SplashScreen.m in Sources */,
 			);

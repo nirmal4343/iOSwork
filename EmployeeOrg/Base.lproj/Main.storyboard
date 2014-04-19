@@ -61,6 +61,7 @@
                     <connections>
                         <outlet property="searchBar" destination="0iv-Bq-jcL" id="5me-Vw-HB7"/>
                         <outlet property="searchDisplayController" destination="aF2-gl-6jW" id="8Gn-zM-Ecs"/>
+                        <segue destination="fd3-XV-whP" kind="push" identifier="toEmpDtl" id="eMO-pD-lak"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AFh-pG-fyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +83,26 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1474" y="129"/>
+            <point key="canvasLocation" x="1514" y="138"/>
+        </scene>
+        <!--Employee Details-->
+        <scene sceneID="O4x-WD-4uF">
+            <objects>
+                <viewController id="fd3-XV-whP" customClass="EmployeeDetails" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pyh-zR-sLa"/>
+                        <viewControllerLayoutGuide type="bottom" id="egW-ho-L8L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ePI-m3-jGa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fss-6k-Low"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbv-Zr-ZdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oc4-vt-1qq">
